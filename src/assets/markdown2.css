@@ -1,0 +1,83 @@
+
+.markdown-text p,.preview p {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    margin: 1em 0
+}
+.markdown-text hr {
+    height: 0;
+    margin: 15px 0;
+    overflow: hidden;
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid #ddd;
+}
+.markdown-text img {
+    max-width: 100%;
+    box-sizing: content-box;
+    background-color: #fff;
+  }
+
+.markdown-text>:last-child,.preview>:last-child,textarea#title {
+    margin-bottom: 1em;
+}
+
+.markdown-text>:first-child,.preview>:first-child {
+    margin-top: 0;
+}
+
+.markdown-text li,.preview li {
+    font-size: 14px;
+    line-height: 2em;
+}
+
+.markdown-text li code,.markdown-text p code,.preview li code,.preview p code {
+    color: #000;
+    background-color: #fcfafa;
+    padding: 4px 6px;
+}
+
+
+.markdown-text img {
+    cursor: pointer;
+}
+.markdown-text a {
+    color: #4078c0;
+    text-decoration: none;
+}
+.markdown-text a:hover,
+.markdown-text a:active {
+    text-decoration: underline;
+}
+
+.markdown-text h1 code,.markdown-text h2 code,.markdown-text h3 code,.markdown-text h4 code,.markdown-text h5 code,.markdown-text h6 code {
+    font-size: inherit;
+    color: inherit;
+}
+.markdown-text>:last-child,.preview>:last-child,textarea#title {
+    margin-bottom: 1em
+}
+
+.markdown-text>:first-child,.preview>:first-child {
+    margin-top: 0
+}
+
+.markdown-text li,.preview li {
+    font-size: 14px;
+    line-height: 2em
+}
+
+.markdown-text li code,.markdown-text p code,.preview li code,.preview p code {
+    color: #000;
+    background-color: #fcfafa;
+    padding: 4px 6px
+}
+
+.markdown-text img {
+    cursor: pointer
+}
+
+.markdown-text h1 code,.markdown-text h2 code,.markdown-text h3 code,.markdown-text h4 code,.markdown-text h5 code,.markdown-text h6 code {
+    font-size: inherit;
+    color: inherit
+}
