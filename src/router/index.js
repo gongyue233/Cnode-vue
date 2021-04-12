@@ -16,6 +16,13 @@ export default new router({
             }
         },
         {
+            name:'root_tab',
+            path:'/tab=:tab',
+            components:{
+                main:PosltList
+            }
+        },
+        {
             name:'post_content',
             path:'/topic/:id&author=:name',
             components:{

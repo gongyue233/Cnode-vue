@@ -7,12 +7,33 @@
         <!--下面是主题列表需要使用cnode的API-->
         <div class="topic_list" v-else>
             <ul>
-                <li class="tab_list">
-                    <span class="topic_tab">全部</span>
-                    <span class="topic_tab">精华</span>
-                    <span class="topic_tab">分享</span>
-                    <span class="topic_tab">问答</span>
-                    <span class="topic_tab">招聘</span>
+                <li class="tab_list">  
+                    <router-link :to="{name:'root'}">                  
+                        <span :class="[{currentab:current_tab===''},'tab']" @click="Changetab('')">
+                            全部
+                        </span>
+                    </router-link>
+                    <router-link :to="{name:'root_tab',params:{tab:'good'}}">
+                        <span :class="[{currentab:current_tab==='good'},'tab']" @click="Changetab('good')">
+                            精华
+                        </span>
+                    </router-link>
+                    <router-link :to="{name:'root_tab',params:{tab:'share'}}">
+                        <span :class="[{currentab:current_tab==='share'},'tab']" @click="Changetab('share')">
+                            分享
+                        </span>
+                    </router-link>
+                    <router-link :to="{name:'root_tab',params:{tab:'ask'}}">
+                        <span :class="[{currentab:current_tab==='ask'},'tab']" @click="Changetab('ask')">
+                            问答
+                        </span>
+                    </router-link>
+                    <router-link :to="{name:'root_tab',params:{tab:'job'}}">
+                        <span :class="[{currentab:current_tab==='job'},'tab']" @click="Changetab('job')">
+                            招聘
+                        </span>
+                    </router-link>
+
                 </li>
                 <li v-for="post in posts" :key="post.id" class="cell">
                     <!--头像-->
@@ -48,6 +69,12 @@ export default {
             isloading:false,
             posts:[],
             postpage:1,
+            current_tab:window.localStorage.getItem('tab') || '',           
+        }
+    },
+    watch:{
+        '$route':function(to,from){
+            this.getData();
         }
     },
     components:{
@@ -60,6 +87,7 @@ export default {
                 params:{
                     page:this.postpage,
                     limit: 30,
+                    tab:this.$route.params.tab
                 }
             })
             .then(res=>{
@@ -74,15 +102,24 @@ export default {
         renli(value){
             this.postpage=value;
             this.getData();
+        },
+        Changetab(string){
+            this.current_tab=string;
+            window.localStorage.setItem('tab',this.current_tab);
         }
+        
     },
     beforeMount(){
         this.isloading = true ;//成功之前显示    
-    }
+    },    
 }
 </script>
 
 <style scoped>
+a{
+    color: #80bd01;
+    text-decoration: none;
+}
 img{
     width: 30px;
     height: 30px;
@@ -112,7 +149,7 @@ ul > .cell > .reply_all .reply_count{
 ul > li > span{
     font-size: 14px;    
 }
-#poslt > .topic_list > ul > .tab_list > span {
+#poslt > .topic_list > ul > .tab_list > a {
     margin: 0 10px;
     color: #80bd01;
 }
@@ -181,10 +218,14 @@ ul > .cell{
     border-radius: 3px 3px 0 0
 }
 
-#poslt > .topic_list > ul .tab_list .topic_tab{
-    margin: 0 10px;
-    color: #80bd01
+#poslt > .topic_list > ul .tab_list .currentab{
+    color: white;
+    padding: 2px 4px;
+    background: #80bd01;
+    border-radius: 3px;
 }
+
+
 #poslt > .topic_list > ul{
     padding: 0;
 }
